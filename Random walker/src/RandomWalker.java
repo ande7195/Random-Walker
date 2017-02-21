@@ -1,0 +1,98 @@
+
+import java.util.Random;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Anders
+ */
+public class RandomWalker {
+
+
+
+
+    private int x;
+    private int y;
+    private int maxSteps;
+    private int currentSteps;
+    private int edge;
+
+    public RandomWalker(int maxSteps, int edge) {
+        this.maxSteps = maxSteps;
+        this.edge = edge;
+        this.x=0;
+        this.y=0;
+        this.currentSteps=0;
+    }
+
+    @Override
+    public String toString() {
+        return "RandomWalk{" + "x=" + x + ", y=" + y + ", currentSteps=" + currentSteps + '}';
+    }
+
+    public RandomWalker(int x, int y, int maxSteps, int edge) {
+        this.x = x;
+        this.y = y;
+        this.maxSteps = maxSteps;
+        this.edge = edge;
+    }
+    public void takeStep(){
+        
+        Random ran= new Random() ;
+       int step=ran.nextInt(4);
+        switch(step){
+            case 0: y--;
+                    currentSteps++;
+            break;
+            case 1: y++;
+                    currentSteps++;
+            break;
+            case 2: x--;
+                    currentSteps++;
+            break;
+            case 3: x++;
+                    currentSteps++;
+            break;
+        }
+            
+        
+        
+       
+    }
+    
+    boolean moreSteps(){
+        if(currentSteps<maxSteps){
+            return true;
+        }
+                return false;
+            
+        
+    }
+    
+    boolean inBounds(){
+        if(x<= edge&&x>=-edge){
+         if(y<=edge&&y>=-edge){
+             return true;
+         }else{
+             return false;
+      
+         }    
+          
+    }
+        return false;
+    }
+    boolean walk(){
+        
+        while (moreSteps()==true &&inBounds()==true){
+            return true;
+        }
+        return false;
+    }
+}
+   
+
