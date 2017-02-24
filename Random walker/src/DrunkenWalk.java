@@ -17,7 +17,7 @@ public class DrunkenWalk {
           int counter;
           counter =0;
           RandomWalker drunkie = new RandomWalker(0, 0, 0, 0,0 );
-         //chang the number i is smaller than to change the amout of steps that should be taken
+         
           for (int i = 0; i < 500; i++) {
               drunkie.setEdge(10);
               drunkie.takeStep();
@@ -26,6 +26,7 @@ public class DrunkenWalk {
                  drunkie.setY(0);
                  counter++;
                   System.out.println("He fell over");
+                  //when the drunk guy falls over he returns to the center and continues from the amout of steps where he fell
               }
               System.out.println(drunkie); 
               
