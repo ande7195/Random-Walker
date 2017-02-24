@@ -21,13 +21,15 @@ public class RandomWalker {
     private int maxSteps;
     private int currentSteps;
     private int edge;
+    private int maxDistance;
 
-    public RandomWalker(int maxSteps, int edge) {
+    public RandomWalker(int maxSteps, int edge,int maxDistance) {
         this.maxSteps = maxSteps;
         this.edge = edge;
         this.x=0;
         this.y=0;
         this.currentSteps=0;
+        this.maxDistance=maxDistance;
     }
 
     @Override
@@ -35,11 +37,12 @@ public class RandomWalker {
         return "RandomWalk{" + "x=" + x + ", y=" + y + ", currentSteps=" + currentSteps + '}';
     }
 
-    public RandomWalker(int x, int y, int maxSteps, int edge) {
+    public RandomWalker(int x, int y, int maxSteps, int edge, int maxDistance) {
         this.x = x;
         this.y = y;
         this.maxSteps = maxSteps;
         this.edge = edge;
+        this.maxDistance=maxDistance;
     }
     public void takeStep(){
         
@@ -63,6 +66,30 @@ public class RandomWalker {
         
         
        
+    }
+
+    public int getEdge() {
+        return edge;
+    }
+
+    public void setEdge(int edge) {
+        this.edge = edge;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
     
     boolean moreSteps(){
@@ -92,6 +119,19 @@ public class RandomWalker {
             return true;
         }
         return false;
+    }
+    public int getMaxDistance(){
+        int result;
+        result=0;
+        if(Math.abs(getX())>Math.abs(getY())){
+            result= getX();
+            
+        } if(Math.abs(getX())<Math.abs(getY())){
+            result=getY();
+        } if(Math.abs(getX())==Math.abs(getY())) {
+            result=getX();
+        }
+       return result; 
     }
 }
    
